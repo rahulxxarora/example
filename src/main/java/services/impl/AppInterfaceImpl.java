@@ -40,8 +40,21 @@ public class AppInterfaceImpl implements AppInterface {
     @Override
     public Map<MetricType, Float> showDailyMetric(User user) {
         Map<MetricType, Float> metrics = new HashMap<>();
-        metrics.put(MetricType.HEIGHT, dataManagerService.fetchAvgByMetricInGivenDuration(user, MetricType.HEIGHT, 0L, 10L));
-        metrics.put(MetricType.WEIGHT, dataManagerService.fetchAvgByMetricInGivenDuration(user, MetricType.WEIGHT, 0L, 10L));
+        // Considering 0 - 24 as the daily timestamp range
+        // Could have used a rolling window here, if current ts was provided
+        metrics.put(MetricType.HEIGHT, dataManagerService.fetchAvgByMetricInGivenDuration(user, MetricType.HEIGHT, 0L, 24L));
+        metrics.put(MetricType.WEIGHT, dataManagerService.fetchAvgByMetricInGivenDuration(user, MetricType.WEIGHT, 0L, 24L));
+
+        return metrics;
+    }
+
+    @Override
+    public Map<MetricType, Float> showWeeklyMetric(User user) {
+        Map<MetricType, Float> metrics = new HashMap<>();
+        // Considering 0 - 168 as the weekly timestamp range
+        // Could have used a rolling window here, if current ts was provided
+        metrics.put(MetricType.HEIGHT, dataManagerService.fetchAvgByMetricInGivenDuration(user, MetricType.HEIGHT, 0L, 168L));
+        metrics.put(MetricType.WEIGHT, dataManagerService.fetchAvgByMetricInGivenDuration(user, MetricType.WEIGHT, 0L, 168L));
 
         return metrics;
     }

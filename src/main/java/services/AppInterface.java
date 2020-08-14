@@ -14,4 +14,5 @@ public interface AppInterface {
     boolean login(User user) throws UserNotPresentException;
     List<Device> showAllDevices(User user);
     Map<MetricType, Float> showDailyMetric(User user);
+    Map<MetricType, Float> showWeeklyMetric(User user);
 }
