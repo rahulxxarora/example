@@ -1,7 +1,6 @@
 package dao.impl;
 
 import dao.DataManagerDao;
-import data.entities.HeightMetric;
 import data.entities.Metric;
 import data.entities.User;
 import data.enums.MetricType;
@@ -54,7 +53,7 @@ public class DataManagerDaoImpl implements DataManagerDao {
     @Override
     public float fetchMinByMetricInGivenDuration(User user, MetricType metricType, Long startTime, Long endTime) {
         List<Metric> metrics = userData.get(user.getUsername());
-        Float response = new Float(10000000);
+        Float response = 10000000F;
 
         if (metrics == null || metrics.isEmpty()) {
             return response;
@@ -78,7 +77,7 @@ public class DataManagerDaoImpl implements DataManagerDao {
     @Override
     public float fetchMaxByMetricInGivenDuration(User user, MetricType metricType, Long startTime, Long endTime) {
         List<Metric> metrics = userData.get(user.getUsername());
-        Float response = new Float(0);
+        Float response = 0F;
 
         if (metrics == null || metrics.isEmpty()) {
             return response;

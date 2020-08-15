@@ -6,7 +6,8 @@ import lombok.Data;
 @Data
 public class WeightMetric extends Metric {
 
-    private MetricType type = MetricType.WEIGHT;
-    private Long timestamp;
+    public WeightMetric() {
+        type = MetricType.WEIGHT;
+    }
     private Float value;
 }

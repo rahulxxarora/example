@@ -6,7 +6,8 @@ import lombok.Data;
 @Data
 public class HeightMetric extends Metric {
 
-    private MetricType type = MetricType.HEIGHT;
-    private Long timestamp;
+    public HeightMetric() {
+        type = MetricType.HEIGHT;
+    }
     private Float value;
 }
